@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 void main() {
   return runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Text('Dice'),
+          title: Center(
+            child: Text('Dice'),
+          ),
           backgroundColor: Colors.red,
         ),
         body: DicePage(),
@@ -33,6 +36,15 @@ class _DicePageState extends State<DicePage> {
     });
   }
 
+  Widget buildImageButtons(Image diceImage) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: diceImage,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -40,18 +52,9 @@ class _DicePageState extends State<DicePage> {
         onTap: changeDice,
         child: Row(
           children: [
-            Image.asset("images/dice$leftDice.png"),
-            Image.asset("images/dice$rightDice.png"),
-          ]
-              .map(
-                (e) => Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: e,
-                  ),
-                ),
-              )
-              .toList(),
+            buildImageButtons(Image.asset("images/dice$leftDice.png")),
+            buildImageButtons(Image.asset("images/dice$rightDice.png")),
+          ],
         ),
       ),
     );
