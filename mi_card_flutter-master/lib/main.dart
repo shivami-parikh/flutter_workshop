@@ -30,13 +30,13 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "King of Monsters",
+                  "KING OF MONSTERS",
                   style: TextStyle(
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    letterSpacing: 2,
-                  ),
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      letterSpacing: 3.0,
+                      fontFamily: "AmaticSC Bold"),
                 ),
                 SizedBox(
                   height: 20.0,

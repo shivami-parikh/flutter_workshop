@@ -23,3 +23,11 @@ flutter:
     - family: Courgette
       fonts:
         - asset: assets/fonts/Courgette-Regular.ttf
+
+    - family: AmaticSC Regular
+      fonts:
+        - asset: assets/fonts/AmaticSC-Regular.ttf
+
+    - family: AmaticSC Bold
+      fonts:
+        - asset: assets/fonts/AmaticSC-Bold.ttf
