@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/answer.dart';
 import 'package:quiz/question.dart';
+import 'package:quiz/result.dart';
 
 void main() {
   runApp(QuizApp());
@@ -29,12 +30,21 @@ class _QuizAppState extends State<QuizApp> {
   ];
 
   var _questionIndex = 0;
+  var _totalScore = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
     setState(() {
       if (_questionIndex < _questions.length) {
         _questionIndex++;
       }
+    });
+    _totalScore += score;
+  }
+
+  void _reset() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
     });
   }
 
@@ -47,25 +57,27 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: (_questionIndex < _questions.length)
             ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Question(_questions[_questionIndex]['question'] as String),
                   Answer(
                       _answerQuestion,
                       (_questions[_questionIndex]['answers']
-                          as List<String>)[0]),
+                          as List<String>)[0],
+                      1),
                   Answer(
                       _answerQuestion,
                       (_questions[_questionIndex]['answers']
-                          as List<String>)[1]),
+                          as List<String>)[1],
+                      2),
                   Answer(
                       _answerQuestion,
                       (_questions[_questionIndex]['answers']
-                          as List<String>)[2]),
+                          as List<String>)[2],
+                      3),
                 ], //children
               )
-            : Center(
-                child: Text("You did it!!"),
-              ),
+            : Result(_totalScore, _reset),
       ),
     );
   }
